@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://book-review-platform-3gyf.onrender.com';
-
+const BASE_URL = 'https://book-review-platform-3gyf.onrender.com/api';
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');
   return {
