@@ -9,9 +9,22 @@ dotenv.config();
 const app = express();
 // The database connection function is called before app setup, ensuring connection logic runs.
 connectDB();
-
+const allowedOrigins = [
+  'http://localhost:3000', // Still useful for local development
+  'https://bookreview-hub.netlify.app' // YOUR LIVE NETLIFY DOMAIN
+];const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or local file access)
+    // OR if the origin is in our allowed list
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+app.use(cors(corsOptions));
 // Middleware
-app.use(cors());
 app.use(express.json()); // Body parser
 
 // Route loading
