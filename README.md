@@ -1,102 +1,79 @@
-Book Review Platform (MERN Stack)
+# Book Review Hub (MERN Stack)
+
+
 This is a comprehensive full-stack application built using the MERN (MongoDB, Express, React, Node.js) stack. It functions as a platform where users can securely register, log in, manage a public catalog of books, and submit and manage their own reviews and ratings.
 
-Key Features Implemented
-Secure Authentication: User signup and login implemented using JWT (JSON Web Tokens) and bcrypt for password hashing.
+---
 
-Authorization: Middleware protects all creation, update, and deletion routes, ensuring only logged-in users and the original creator can modify content.
 
-Data Aggregation: Calculates and displays the average rating for each book dynamically using MongoDB aggregation.
+## 🌟 Key Features Implemented
 
-Pagination: The book list displays content with pagination (5 books per page).
+| Feature Category | Details |
+| :--- | :--- |
+| **Authentication & Security** | Secure login/signup using **JWT** and **bcrypt** hashing. All data modification routes are protected by Express middleware. |
+| **Data & Core Logic** | Full **CRUD** operations for Books and Reviews. Dynamic calculation and display of **Average Ratings**. |
+| **Pagination** | The book list efficiently loads data with pagination (5 books per page). |
+| **Search, Filter, & Sort** | Users can search by Title/Author, filter by Genre, and sort by Published Year or Average Rating. |
+| **Profile Dashboard** | Dedicated page where logged-in users can view and manage their added books and submitted reviews. |
+| **Rating Charts** | Book details pages display a **Rating Distribution Bar Chart** using Recharts. |
 
-Search, Filter, & Sort (Bonus): Allows users to search by title/author, filter by genre, and sort by published year or average rating.
+---
 
-Profile Dashboard (Bonus): Dedicated page where users can view all the books they have added and all the reviews they have submitted.
 
-Project Structure
-The project is divided into two main folders:
+## 🛠️ Setup and Installation
 
-book-review-platform/
-├── backend/                  # Node.js, Express, MongoDB API
-│   ├── config/               # DB connection logic
-│   ├── controllers/          # Business logic (Auth, Books, Reviews)
-│   ├── middleware/           # JWT verification
-│   ├── models/               # Mongoose Schemas (User, Book, Review)
-│   ├── routes/               # API endpoints
-│   ├── seeder.js             # Script for populating test data
-│   └── server.js             # Main server entry point
-├── frontend/                 # React Application (UI)
-│   ├── src/
-│   │   ├── api/              # Axios utility functions
-│   │   ├── components/       # Reusable components (Navbar, BookCard)
-│   │   ├── context/          # Authentication Context
-│   │   └── pages/            # Router views
-│   └── tailwind.config.js    # Styling configuration
-└── README.md
+### Prerequisites
 
-Setup Instructions
-Prerequisites
-Node.js (v18+)
+* Node.js (v18+)
+* MongoDB Atlas Account (Cluster and Database User created)
+* Git
 
-MongoDB Atlas Account (Cluster and Database User created)
+### Step 1: Clone and Setup
 
-Step 1: Backend Setup
+Clone the repository
+
+```bash
+git clone [https://github.com/renukapathivada/book-review-platform.git](https://github.com/renukapathivada/book-review-platform.git)
+cd book-review-platform
+```
+### Step 2:Backend Configuration
 Navigate to the backend directory:
 
+```bash
 cd backend
-
-Install dependencies:
-
 npm install
-
-Create a .env file in the backend folder and add your credentials:
-
+```
+Create a .env file and add your credentials. Note: These are also required for the live Render service.
+```
 MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<dbname>?retryWrites=true&w=majority
-JWT_SECRET=YOUR_SECRET_KEY_FOR_JWT
-
-Seed the Database (Optional but Recommended):
-
+JWT_SECRET=YOUR_SECURE_SECRET_KEY
+```
+Seed the Database (Optional but Recommended for Testing):
+```bash
 npm run data:import
-
-Start the backend server:
-
+```
+Start the Backend Server (Local Testing):
+```bash
 npm run dev
+```
 
-(The server runs on http://localhost:5000)
+### Step 3:Frontend Configuration
 
-Step 2: Frontend Setup
 Open a new terminal and navigate to the frontend directory:
-
-cd frontend
-
-Install dependencies (including bonus libraries):
-
+```bash
+cd ../frontend
 npm install
-
-Start the React application:
-
+```
+Start the React Application (Local Testing):
+```bash
 npm start
-
-(The application runs on http://localhost:3000)
-
-Test Credentials (from Seeder)
-You can use the following credentials to test ownership, reviews, and the Profile Dashboard:
-
-User
-
-Email
-
-Password
-
-Alice
-
-alice@example.com
-
-123456
-
-Bob
-
-bob@example.com
-
-123456
+```
+### 🌐 Deployed Links 
+Frontend UI (React)
+```bash
+https://bookreview-hub.netlify.app
+```
+Backend API (Node/Express)
+```bash
+https://book-review-platform-3gyf.onrender.com
+```
